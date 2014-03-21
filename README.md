@@ -22,12 +22,13 @@ By default, looks for a default.conf in the root folder.
 Configs are JSON. Available Config Keys:
 
 - server: (String) the webpage test server to run against.
+- port: (Integer) the webpage test server port.
 - urls: (Object) where keys are the name of the page (e.g. 'search') and the values are the urls to test. Used only by run.php
  OR
 - script: (String) a WPT script
 - prepend: (String|Array) WPT scripts to prepend to url or script
 - graphite: (String) the graphite server to graph to. Used only by get_results.php
-- logging_js: (String) 'webpagetest.public' or 'webpagetest.private'. Used as the graphite namespace and added to splunk logs so we can easily tell which are public, which are private
+- logging_ns: (String) 'webpagetest.public' or 'webpagetest.private'. Used as the graphite namespace so we can easily tell which are public, which are private
 - locations: (Array) List of browser locations. Use this to limit to only certain locations/browsers
              To see a list of available locations, run run.php with the flag -l. It will output locations and exit.
 - run_options: (Object) The options to pass to WebPagetest, which follow the
@@ -82,4 +83,4 @@ If you are still having issues, try posting in the
 Etsy Specific Information
 ===================
 
-For more Etsy specific setup details, check out the "Monitoring Frontend Performance with WebPagetest" article on our internal wiki.
+For more Etsy specific setup details, check out the ["Monitoring Frontend Performance with WebPagetest"](http://codeascraft.com/2012/11/29/measuring-front-end-performance-with-real-users/) article on our internal wiki.
