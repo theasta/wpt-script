@@ -22,12 +22,13 @@ By default, looks for a default.conf in the root folder.
 Configs are JSON. Available Config Keys:
 
 - server: (String) the webpage test server to run against.
-- port: (Integer) the webpage test server port.
 - urls: (Object) where keys are the name of the page (e.g. 'search') and the values are the urls to test. Used only by run.php
  OR
 - script: (String) a WPT script
 - prepend: (String|Array) WPT scripts to prepend to url or script
-- graphite: (String) the graphite server to graph to. Used only by get_results.php
+- service: (String) the service to use : statsd or graphite
+- service_server: (String) the graphite or statsd server. Used only by get_results.php
+- service_port: (Integer) the graphite or statsd server port.
 - logging_ns: (String) 'webpagetest.public' or 'webpagetest.private'. Used as the graphite namespace so we can easily tell which are public, which are private
 - locations: (Array) List of browser locations. Use this to limit to only certain locations/browsers
              To see a list of available locations, run run.php with the flag -l. It will output locations and exit.

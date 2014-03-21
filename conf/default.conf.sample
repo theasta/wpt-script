@@ -1,13 +1,14 @@
 {
     "server": "http://example.com",
-    "port": 8125,
     "pending_dir": "private",
     "locations": ["US_East", "US_East_wptdriver:Firefox", "US_East_wptdriver:Chrome", "US_East_IE8"],
     "urls": {
         "homepage": "http://www.example.com",
         "login": "http://www.example.com"
     },
-    "graphite": "graphite.example.com",
+    "service": "graphite",
+    "service_server": "graphite.example.com",
+    "service_port": 8125,
     "logging_ns": "webpagetest.private",
     "prepend": "Login",
     "username": "someuser",

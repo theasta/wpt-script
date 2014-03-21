@@ -41,8 +41,9 @@ $results = $client->getResults($runs);
 
 $logging_ns = $config['logging_ns'];
 
-$graphite = $config['graphite'];
-$port = $config['port'];
+$service = (!$config['service']) ? 'graphite' : $config['service'];
+$server = $config['service_server'];
+$port = $config['service_port'];
 
-$grapher = new Grapher($graphite, $port, $logging_ns);
+$grapher = new Grapher($server, $port, $logging_ns, $service);
 $grapher->graphResults($results);
