@@ -6,7 +6,6 @@ chdir($dir);
 require("../WebpagetestClient.php");
 require("../ResultsHelper.php");
 require("../Grapher.php");
-require("../SplunkLogger.php");
 
 $shortopts = "c:";
 $options = getopt($shortopts);
@@ -42,12 +41,8 @@ $results = $client->getResults($runs);
 
 $logging_ns = $config['logging_ns'];
 
-$splunkLogger = new SplunkLogger($config['splunkLog'], $logging_ns);
-foreach ($results as $result) {
-    $splunkLogger->log($result);
-}
-
 $graphite = $config['graphite'];
+$port = $config['port'];
 
-$grapher = new Grapher($graphite, $logging_ns);
+$grapher = new Grapher($graphite, $port, $logging_ns);
 $grapher->graphResults($results);
