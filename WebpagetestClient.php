@@ -155,7 +155,7 @@ class WebpagetestClient {
             }
             $options['script'] .= file_get_contents(__DIR__.'/scripts/'.$script);
             $name = str_replace('.txt', '', $script);
-            $results = array_merge($results, $this->runTests($name, 'scripted test: ' + $name, $locations, $options));
+            $results = array_merge($results, $this->runTests($name, 'scripted test: ' . $name, $locations, $options));
         }
 
         return $results;
