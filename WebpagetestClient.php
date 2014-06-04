@@ -144,6 +144,21 @@ class WebpagetestClient {
     }
 
     public function testScript($locations) {
+
+        $results = array();
+        $options = $this->getRunOptions();
+        $scripts = $this->config['script'];
+        foreach ($scripts as $script) {
+            $options['script'] = file_get_contents(__DIR__.'/scripts/'.$script);;
+            if (isset($this->config['prepend'])) {
+                $options['script'] .= $this->prependScripts($this->config['prepend']);
+            }
+            $results = array_merge($results, $this->runTests(str_replace('.txt', '', $this->config['script']), 'scripted test', $locations, $options));
+        }
+
+        return $results;
+
+        /*
         $options = $this->getRunOptions();
         $options['script'] = file_get_contents(__DIR__.'/scripts/'.$this->config['script']);
         if(isset($this->config['prepend'])) {
@@ -153,6 +168,7 @@ class WebpagetestClient {
         $results = $this->runTests(str_replace('.txt', '', $this->config['script']), 'scripted test', $locations, $options);
 
         return $results;
+        */
     }
 
     public function testUrls($locations) {
