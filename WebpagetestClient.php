@@ -149,11 +149,12 @@ class WebpagetestClient {
         $options = $this->getRunOptions();
         $scripts = $this->config['script'];
         foreach ($scripts as $script) {
-            $options['script'] = file_get_contents(__DIR__.'/scripts/'.$script);;
+            $options['script'] = '';
             if (isset($this->config['prepend'])) {
                 $options['script'] .= $this->prependScripts($this->config['prepend']);
             }
-            $results = array_merge($results, $this->runTests(str_replace('.txt', '', $this->config['script']), 'scripted test', $locations, $options));
+            $options['script'] = file_get_contents(__DIR__.'/scripts/'.$script);
+            $results = array_merge($results, $this->runTests(str_replace('.txt', '', $script), 'scripted test', $locations, $options));
         }
 
         return $results;
