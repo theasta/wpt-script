@@ -186,24 +186,15 @@ class WebpagetestClient {
 
             $options['location'] = $location['location'];
             $options['browser'] = $location['browser'];
-            $login_string = 'signedout';
-            if(isset($this->config['prepend'])) {
-                if(is_string($this->config['prepend']) && $this->config['prepend'] == 'Login') {
-                    $login_string = 'signedin';
-                } elseif(is_array($this->config['prepend']) && in_array('Login', $this->config['prepend'])) {
-                    $login_string = 'signedin';
-                }
-            }
             $label = implode('.', array(
                 $name,
                 $this->slug($location['location']),
                 $this->slug($location['browser']),
-                $login_string,
             ));
             $options['label'] = $label;
 
             $response = $this->request(WebpagetestClient::$run_path, $options);
-            $this->log("Started $login_string test for $url / {$options['location']} / {$options['browser']}");
+            $this->log("Started test for $url / {$options['location']} / {$options['browser']}");
             $results[] = $response;
         }
 
