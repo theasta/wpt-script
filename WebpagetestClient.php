@@ -153,7 +153,7 @@ class WebpagetestClient {
             if (isset($this->config['prepend'])) {
                 $options['script'] .= $this->prependScripts($this->config['prepend']);
             }
-            $options['script'] = file_get_contents(__DIR__.'/scripts/'.$script);
+            $options['script'] .= file_get_contents(__DIR__.'/scripts/'.$script);
             $name = str_replace('.txt', '', $script);
             $results = array_merge($results, $this->runTests($name, 'scripted test: ' + $name, $locations, $options));
         }
